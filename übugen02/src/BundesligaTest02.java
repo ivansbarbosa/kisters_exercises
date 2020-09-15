@@ -2,11 +2,16 @@ import java.util.*;
 import java.io.*;
 public class BundesligaTest02 {
     Scanner input;
+    String [] nameList;
+    ArrayList<List<String>> score;
+
 
     public static void main (String[] args){
         BundesligaTest02 results = new BundesligaTest02();
-        //results.nameList();
+        results.nameList();
         results.score();
+        results.getResult("FC Bayern München");
+
     }
 
 
@@ -28,10 +33,8 @@ public class BundesligaTest02 {
         addArray[oldArray.length] = newValue;
         return addArray;
     }
-
-
     public void nameList(){
-        String [] nameList = new String[0];
+        nameList = new String[0];
         while(input.hasNextLine()){
             String line = input.nextLine();
             String nameTeam = line.substring(0,25);
@@ -40,25 +43,39 @@ public class BundesligaTest02 {
         }
         System.out.println(Arrays.toString(nameList));
     }
-
     public void score(){
-        //String[] score = new String[0];
-        ArrayList<List<String>> score = new ArrayList<List<String>>();// why does not work with ArrayList<ArrayList<String>>?
+        score = new ArrayList<List<String>>();// why does not work with ArrayList<ArrayList<String>>?
         while (input.hasNextLine()){
             String line = input.nextLine();
             String scoreLine = line.substring(25,96);
             String[] scoreSeparated = scoreLine.split(" ");
             List<String>scoreList = Arrays.asList(scoreSeparated);
             score.add(scoreList);
-            System.out.println((score)); // every value in an array
-
-            //score.add(String.valueOf(scoreSeparated));
-            //System.out.println(score);
-            // see arraylist
-            //score = addArray(scoreSeparated,scoreLine);
         }
-        //System.out.println(score);
-        //System.out.println(Arrays.toString(score));
+        //System.out.println((score)); // every value in an array
+    }
+    public void scannerTest(){
+//        Scanner input = new Scanner(System.in);
+//        System.out.println("Enter name Team 01");
+//        String team01 = input.nextLine();
+//        System.out.println("Enter name Team 02");
+//        String team02 = input.nextLine();
+
+        //team01 = "FC Bayern München";
+        //team02 = "Borussia Dortmund";
+
+    }
+    public void getResult(String team01){  //String team01, String team02
+        int test;
+        //int posTeam02;
+        for (int i = 0; i < nameList.length; i++){
+        //System.out.println(nameList[i]);
+            if (team01.equals(nameList[i])){
+                test = i;
+                System.out.println(test);
+            }
+        }
+
     }
 
 
